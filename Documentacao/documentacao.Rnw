@@ -1,0 +1,22 @@
+% Documentação - Estratégia de Vocalização
+
+\documentclass[a4paper]{article}
+
+% Inclusão de pacotes
+\include{pacotes}
+
+\title{Documentação - Estratégia de Vocalização}
+\author{Dida, Fefex, Popetar, Zé}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+
+\include{Introducao}
+\include{Metodo}
+
+
+
+
+\end{document}
