@@ -1,0 +1,30 @@
+\section{Método}\label{Metodo}
+
+O modelo dos sapos pode ser resumido nas equações abaixo, onde x corresponde ao número de vocalizantes e y ao número de vocalizantes facultativos (aqui, é para entender vocalizante parcial). Notem que tem  equações diferentes para y, pois ainda não sabemos qual usar (só testei a a).
+
+\begin{center}
+\vspace{3 mm}
+$x(t + \tau)= +x(t) +k_1 y(t) -k_2 x(t)$ (1)
+
+\vspace{3 mm}
+$y(t + \tau)= +y(t) + (1-e^{-\lambda y(t)})x(t) + (1-e^{-\gamma x(t)})y(t) -k_1 y(t) +k_2 x(t)$ (2a)
+
+\vspace{3 mm}
+$y(t + \tau)= +y(t) + (1-e^{-\lambda x(t)y(t)}) + (1-e^{-\gamma x(t)y(t)}) -k_1 y(t) +k_2 x(t)$ (2c)
+\end{center}
+
+Ainda, o modelo pode ser escrito na forma com a qual o Gillespie (criador da técnina) escreve
+
+Reaction channel
+
+Para Vocalizante e não-vocalizantes (1)
+
+R1: Não-vocalizante que se torna vocalizante
+
+R2: Vocalizante que se torna não-vocalizante
+
+Exclusivo para não-vocalizante (2a), (2b) e (2c)
+
+R3: Sucesso reprodutivo de x, com parâmetro lambda
+
+R4: Sucesso reprodutivo de y, com parâmetro gama
