@@ -1,5 +1,7 @@
 \section{Método}\label{Metodo}
 
+Depois da reunião com o Zé, notei que os modelos abaixo estão com algumas coisas erradas que precisam ser alterados!!! Repensar nas equações do sucesso reprodutivo do x na presença do y.
+
 O modelo dos sapos pode ser resumido nas equações abaixo, onde x corresponde ao número de vocalizantes e y ao número de vocalizantes facultativos (aqui, é para entender vocalizante parcial). Notem que tem  equações diferentes para y, pois ainda não sabemos qual usar (só testei a a).
 
 \begin{center}
@@ -28,3 +30,37 @@ Exclusivo para não-vocalizante (2a), (2b) e (2c)
 R3: Sucesso reprodutivo de x, com parâmetro lambda
 
 R4: Sucesso reprodutivo de y, com parâmetro gama
+
+Propensity functions
+
+Para vocalizante e não-vocalizantes (1)
+
+\begin{center}
+\vspace{3 mm}
+$a_1(y)=k_1 y(t)$
+
+\vspace{3 mm}
+$a_2(x)=k_2 x(t)$
+\end{center}
+
+Para não-vocalizante (2a)
+
+\begin{center}
+\vspace{3 mm}
+$a_3(x,y)=(1-e^{-\lambda y(t)})x(t)$
+
+\vspace{3 mm}
+$a_4(x,y)=(1-e^{-\gamma x(t)})y(t)$
+\end{center}
+
+ou para não-vocalizante (2b)
+
+\begin{center}
+\vspace{3 mm}
+$a_3(x,y)=1-e^{-\lambda x(t)y(t)}$
+
+\vspace{3 mm}
+$a_4(x,y)=1-e^{-\gamma x(t)y(t)}$
+\end{center}
+
+Ainda é importante lembrar que a população é fixa, como havíamos discutido, logo, no código do R é natural entender a substituição do x(t) por N-y(t), onde N é o número total da população, ou seja, N=x(t) + y(t). Vale lembrar que por conta dessa premissa, não estão incluindo os termos de nascimento e morte explicitamente. Supostamente a mesma quantidade de animais que morrem, nascem, sem alterar a proporção de vocalizantes e não-vocalizantes.
