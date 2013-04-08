@@ -60,7 +60,7 @@ $a_4(x,y)=(1-k_3 e^{-\lambda x})$
 Este modelo é formalizado em termos de equações diferenciais ordinárias acopladas, por conta da facilidade de comunicação. Ele está incompleto (muito próximo ao modelo do Zé, se não idêntico), mas já coloquei aí, pois é mais simples e permite achar algumas relações interessante. Além disso, nessa formulação, existe um efeito que é descrito no final desta subsection e eu não sei se é interessante para o modelo de estratégias.
 
 \vspace{3 mm}
-$\frac{dx}{dt} = \ldots$
+$\frac{dx}{dt} = k_1 y(t) -k_2 x(t)$
 
 \vspace{3 mm}
 $\frac{dy}{dt} = (k_1 - k_2 y)x + (k_3 + k_4 y)x + \ldots$
@@ -86,3 +86,54 @@ Dada essa condição verifica-se que, considerando $N=x+y$:
 
 \vspace{3 mm}
 (iii) $(k_1 - k_2 (N-x))x=(k_1 - k_2 y)x$ , analisando o termo $y*x$ nota-se que o máximo é $x=y$, isso implica que com o $y \geq \frac{N}{2}$ o sucesso de $x$ aumenta, faz sentido?
+
+
+\subsection{Modelo Sem Exponencial - 2}
+Esse modelo é praticamente igual ao que o Fefex colocou, apenas juntei os parâmetros $K_4$ e $K_2$. O motivo da repetição é colocar as coisas que tenho até agora.
+
+\vspace{3 mm}
+$\frac{dx}{dt} = k_1 y - k_2 x$
+
+\vspace{3 mm}
+$\frac{dy}{dt} = k_3 x - k_4 y x + k_5 y + k_6 x y + k_2 x - k_1 y$
+
+\vspace{3 mm}
+Como: $k_c= k_4+k_6$
+
+\vspace{3 mm}
+$\frac{dy}{dt} = k_3 x - k_c y x + k_5 y + k_2 x - k_1 y$
+
+Com essas condições temos os seguintes pontos de equilíbrio:
+
+$y^* = \frac{k_1 k_3 + k_2 k_5}{k_c k_1}$
+
+\vspace{3 mm}
+$x^* = \frac{k_1 k_3 + k_2 k_5}{k_c k_2}$
+
+O que mostra que efeito do $k_c$ realmente precisa ser negativo.
+
+Esse P.E. é estável se:
+
+
+$k_1 + k_2 > \frac{k_5(k_1 k_3 + k_2 k_5)}{k_2}$
+\vspace{3 mm}
+
+Rearranjando:
+
+\vspace{3 mm}
+$k_2(k_1 + k_2) > k_5(k_1 k_3 + k_2 k_5)$
+
+Finalmente, esse P.E. se comporta como um nó se:
+
+$k^2_1 + k_2^2 + \frac{k_5^2 k_1^2 k_3^2}{k_2^2} +2 \frac{k_5^3 k_1 k_3}{k_2} +k_5^4 > $
+$ 6 k_1 k_2 + 2 \frac{k_5 k_1^2 k_3}{k_2} + 2 k_1 k_5^2 + 2k_1 k_3 k_5 + 2 k_2 k_5^2 + 4 k_1 k_3 + 4 k_2 k_5$ 
+
+Caso contrário, é um foco.
+
+É importante lembrar que $x^*=$ e $y^*=0$ também são P.E. e são estáveis nessas condições:
+
+\vspace{3 mm}
+$k_1 + k_2 > k_5$
+$k_1 k_3 + 2k_1 k_2 > k_2 k_5$
+
+Porém, para o nosso caso, é interessante que eles sejam instáveis.
