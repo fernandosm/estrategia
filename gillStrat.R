@@ -19,14 +19,12 @@ library(ggplot2)
 #### Propensity functions ####
 # a1(x) = k1*y
 # a2(x) = k2*x
-# a3a(x) = (1-e^(-lambda*y))*x
-# a4a(x) = (1-e^(-gama*x))*y
-# a3b(x) = (1-e^(-lambda*y*x))
-# a4b(x) = (1-e^(-gama*x*y))
+# a3(x) = exp(-rho*y)
+# a4(x) = (1-exp(-lambda*x))
 
 # Parameters
-propFunctionsA  <-  c('k1*y','k2*(N-y)','(1-exp((-lambda*y)))*(N-y)','(1-exp((-gama*(N-y))))*y') # N=x+y
-parms <- c(k1=1,k2=1,lambda=0.03,gama=0.005,N=400);
+propFunctionsA  <-  c('k1*y','k2*(N-y)','exp(-rho*y)','(1-exp(-lambda*(N-y)))') # N=x+y
+parms <- c(k1=1,k2=1,lambda=0.03,rho=0.005,N=400);
 sCM <- matrix(c(-1,1,1,1),nrow=1,byrow=TRUE);# state change matrix
 x0 <- c(y=200)# condição inicial
 tFinal <- 10;
