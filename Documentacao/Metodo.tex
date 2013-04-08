@@ -1,23 +1,25 @@
 \section{Método}\label{Metodo}
+O modelo dos sapos pode ser resumido nas equações abaixo, onde x corresponde ao número de vocalizantes e y ao número de vocalizantes facultativos.
 
-Depois da reunião com o Zé, notei que os modelos abaixo estão com algumas coisas erradas que precisam ser alterados!!! Repensar nas equações do sucesso reprodutivo do x na presença do y.
+Ainda é importante lembrar que a população é fixa, como havíamos discutido, logo, no código do R é natural entender a substituição do x por N-y, onde N é o número total da população, ou seja, N=x + y. Vale lembrar que por conta dessa premissa, não estão incluindo os termos de nascimento e morte explicitamente. Supostamente a mesma quantidade de animais que morrem, nascem, sem alterar a proporção de vocalizantes e não-vocalizantes.
 
-O modelo dos sapos pode ser resumido nas equações abaixo, onde x corresponde ao número de vocalizantes e y ao número de vocalizantes facultativos (aqui, é para entender vocalizante parcial). Notem que tem  equações diferentes para y, pois ainda não sabemos qual usar (só testei a a).
-
-\begin{center}
-\vspace{3 mm}
-$x(t + \tau)= +x(t) +k_1 y(t) -k_2 x(t)$ (1)
+\subsection{Modelo Baseado em Exponencial}
+O modelo baseado na exponencial é mais complexo no sentido de determinar relações analíticas. Vou escrever na forma de equações diferenciais ordinárias acopladas, por conta da facilidade de comunicação.
 
 \vspace{3 mm}
-$y(t + \tau)= +y(t) + (1-e^{-\lambda y(t)})x(t) + (1-e^{-\gamma x(t)})y(t) -k_1 y(t) +k_2 x(t)$ (2a)
+(1) $\frac{dx}{dt} = k_1 y(t) -k_2 x(t)$
 
 \vspace{3 mm}
-$y(t + \tau)= +y(t) + (1-e^{-\lambda x(t)y(t)}) + (1-e^{-\gamma x(t)y(t)}) -k_1 y(t) +k_2 x(t)$ (2c)
-\end{center}
+(2) $\frac{dy}{dt}= e^{-\rho y} + (1-k_3 e^{-\lambda x}) -k_1 y(t) +k_2 x(t)$
+\vspace{3 mm}
 
-Ainda, o modelo pode ser escrito na forma com a qual o Gillespie (criador da técnina) escreve
+Onde o termo $e^{-\rho y}$ é o sucesso reprodutivo de x, o termo $(1-k_3 e^{-\lambda x})$ é o sucesso reprodutivo de y e o $k_3$ está relacionado com o sucesso reprodutivo de y na ausência de $x$.
 
+Ainda, o modelo pode ser escrito na forma com a qual o Gillespie (criador da técnina) escreve:
+
+\vspace{3 mm}
 Reaction channel
+\vspace{3 mm}
 
 Para Vocalizante e não-vocalizantes (1)
 
@@ -25,42 +27,62 @@ R1: Não-vocalizante que se torna vocalizante
 
 R2: Vocalizante que se torna não-vocalizante
 
-Exclusivo para não-vocalizante (2a), (2b) e (2c)
+\vspace{3 mm}
+Exclusivo para não-vocalizante (2)
 
-R3: Sucesso reprodutivo de x, com parâmetro lambda
+R3: Sucesso reprodutivo de x, com parâmetro $\rho$
 
-R4: Sucesso reprodutivo de y, com parâmetro gama
+R4: Sucesso reprodutivo de y, com parâmetro $\lambda$
 
+\vspace{3 mm}
 Propensity functions
 
+\vspace{3 mm}
 Para vocalizante e não-vocalizantes (1)
 
-\begin{center}
 \vspace{3 mm}
 $a_1(y)=k_1 y(t)$
 
 \vspace{3 mm}
 $a_2(x)=k_2 x(t)$
-\end{center}
-
-Para não-vocalizante (2a)
-
-\begin{center}
-\vspace{3 mm}
-$a_3(x,y)=(1-e^{-\lambda y(t)})x(t)$
 
 \vspace{3 mm}
-$a_4(x,y)=(1-e^{-\gamma x(t)})y(t)$
-\end{center}
-
-ou para não-vocalizante (2b)
-
-\begin{center}
-\vspace{3 mm}
-$a_3(x,y)=1-e^{-\lambda x(t)y(t)}$
+Para não-vocalizante (2)
 
 \vspace{3 mm}
-$a_4(x,y)=1-e^{-\gamma x(t)y(t)}$
-\end{center}
+$a_3(x,y)=e^{-\rho y}$
 
-Ainda é importante lembrar que a população é fixa, como havíamos discutido, logo, no código do R é natural entender a substituição do x(t) por N-y(t), onde N é o número total da população, ou seja, N=x(t) + y(t). Vale lembrar que por conta dessa premissa, não estão incluindo os termos de nascimento e morte explicitamente. Supostamente a mesma quantidade de animais que morrem, nascem, sem alterar a proporção de vocalizantes e não-vocalizantes.
+\vspace{3 mm}
+$a_4(x,y)=(1-k_3 e^{-\lambda x})$
+
+
+\subsection{Modelo Sem Exponencial}
+Este modelo é formalizado em termos de equações diferenciais ordinárias acopladas, por conta da facilidade de comunicação. Ele está incompleto (muito próximo ao modelo do Zé, se não idêntico), mas já coloquei aí, pois é mais simples e permite achar algumas relações interessante. Além disso, nessa formulação, existe um efeito que é descrito no final desta subsection e eu não sei se é interessante para o modelo de estratégias.
+
+\vspace{3 mm}
+$\frac{dx}{dt} = \ldots$
+
+\vspace{3 mm}
+$\frac{dy}{dt} = (k_1 - k_2 y)x + (k_3 + k_4 y)x + \ldots$
+
+\vspace{3 mm}
+O termo $(k_1 - k_2 y)x$ corresponde ao sucesso reprodutivo de, que vou tratar como $f(x)$ e o termo $(k_3 + k_4 y)x$ corresponde ao sucesso reprodutivo de y, que vou tratar como $f(y)$.
+
+Para que $f(x)$ faça sentido, deve-se estabelecer a condição:
+
+\vspace{3 mm}
+$f(x)=(k_1 - k_2 y)x \geq 0$, $\forall x \in [0,N]$
+
+onde N é o número total da população (constante).
+
+\vspace{3 mm}
+Dada essa condição verifica-se que, considerando $N=x+y$:
+
+\vspace{3 mm}
+(i) $f(x) = 0$, para $ x=0 $
+
+\vspace{3 mm}
+(ii) $x_{min} = \frac{K_2 N - K_1}{2K_2}$
+
+\vspace{3 mm}
+(iii) $(k_1 - k_2 (N-x))x=(k_1 - k_2 y)x$ , analisando o termo $y*x$ nota-se que o máximo é $x=y$, isso implica que com o $y \geq \frac{N}{2}$ o sucesso de $x$ aumenta, faz sentido?
