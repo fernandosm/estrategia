@@ -55,47 +55,19 @@ $a_3(x,y)=e^{-\rho y}$
 \vspace{3 mm}
 $a_4(x,y)=(1-k_3 e^{-\lambda x})$
 
-
 \subsection{Modelo Sem Exponencial}
-Este modelo é formalizado em termos de equações diferenciais ordinárias acopladas, por conta da facilidade de comunicação. Ele está incompleto (muito próximo ao modelo do Zé, se não idêntico), mas já coloquei aí, pois é mais simples e permite achar algumas relações interessante. Além disso, nessa formulação, existe um efeito que é descrito no final desta subsection e eu não sei se é interessante para o modelo de estratégias.
+Este modelo é formalizado em termos de equações diferenciais ordinárias acopladas, por conta da facilidade de comunicação. Esta primeira forma do modelo foi desenvolvida do pelo Zé e lembra o sistema Lotka-Voterra (presa e predador).
 
-\vspace{3 mm}
-$\frac{dx}{dt} = k_1 y(t) -k_2 x(t)$
-
-\vspace{3 mm}
-$\frac{dy}{dt} = (k_1 - k_2 y)x + (k_3 + k_4 y)x + \ldots$
-
-\vspace{3 mm}
-O termo $(k_1 - k_2 y)x$ corresponde ao sucesso reprodutivo de, que vou tratar como $f(x)$ e o termo $(k_3 + k_4 y)x$ corresponde ao sucesso reprodutivo de y, que vou tratar como $f(y)$.
-
-Para que $f(x)$ faça sentido, deve-se estabelecer a condição:
-
-\vspace{3 mm}
-$f(x)=(k_1 - k_2 y)x \geq 0$, $\forall x \in [0,N]$
-
-onde N é o número total da população (constante).
-
-\vspace{3 mm}
-Dada essa condição verifica-se que, considerando $N=x+y$:
-
-\vspace{3 mm}
-(i) $f(x) = 0$, para $ x=0 $
-
-\vspace{3 mm}
-(ii) $x_{min} = \frac{K_2 N - K_1}{2K_2}$
-
-\vspace{3 mm}
-(iii) $(k_1 - k_2 (N-x))x=(k_1 - k_2 y)x$ , analisando o termo $y*x$ nota-se que o máximo é $x=y$, isso implica que com o $y \geq \frac{N}{2}$ o sucesso de $x$ aumenta, faz sentido?
-
-
-\subsection{Modelo Sem Exponencial - 2}
-Esse modelo é praticamente igual ao que o Fefex colocou, apenas juntei os parâmetros $K_4$ e $K_2$. O motivo da repetição é colocar as coisas que tenho até agora.
+Aqui serão descritos os pontos de equilíbrio e relações entre os parâmetros
 
 \vspace{3 mm}
 $\frac{dx}{dt} = k_1 y - k_2 x$
 
 \vspace{3 mm}
 $\frac{dy}{dt} = k_3 x - k_4 y x + k_5 y + k_6 x y + k_2 x - k_1 y$
+
+\vspace{3 mm}
+$\frac{dy}{dt} = (k_3 - k_4 y)x + (k_5 + k_6 y)x + \ldots$, é igual ao seu modelo, zé. Depois a gente arranca essa linha.
 
 \vspace{3 mm}
 Como: $k_c= k_4+k_6$
@@ -130,10 +102,17 @@ $ 6 k_1 k_2 + 2 \frac{k_5 k_1^2 k_3}{k_2} + 2 k_1 k_5^2 + 2k_1 k_3 k_5 + 2 k_2 k
 
 Caso contrário, é um foco.
 
-É importante lembrar que $x^*=$ e $y^*=0$ também são P.E. e são estáveis nessas condições:
+É importante lembrar que $x^*=0$ e $y^*=0$ também são P.E. e são estáveis nessas condições:
 
 \vspace{3 mm}
 $k_1 + k_2 > k_5$
 $k_1 k_3 + 2k_1 k_2 > k_2 k_5$
 
 Porém, para o nosso caso, é interessante que eles sejam instáveis.
+
+\subsubsection{Considerações sobre o modelo sem exponencial}
+Nessa formulação existe um efeito que eu não sei se é interessante para o modelo de estratégia dos sapos.
+
+O termo $-k_4 yx$ corresponde ao efeito de y no sucesso reprodutivo de $x$, faz sentido? Bom, se isso fizer sentido, ao estudar o efeito deste termo com a variação de $y$, com $y \in [0,N]$, o máximo acontece quando $y=x=\frac{N}{2}$, não esquecendo que N é constante.
+
+O resultado disso é que $y > \frac{N}{2}$ o efeito $-k_4 yx$ volta a ficar pequeno, pois o máximo desse efeito aconteceu quando $y=\frac{N}{2}$, certo?
