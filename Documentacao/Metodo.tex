@@ -18,14 +18,21 @@ Onde o termo $e^{-\rho y}$ é o sucesso reprodutivo de x, o termo $(1-k_3 e^{-\l
 A solução para $\frac{dx}{dt}$ (equação separável) é:
 
 \vspace{3 mm}
-$x=\frac{k_1 y - e^{-(k_1 + k_2)t}}{k_2}$
+$x=\frac{k_1 N}{k_1 + k_2} - ce^{-(k_1 + k_2)t}$
+\vspace{3 mm}
+
+Onde $c$ é uma constante. Ainda, essa equação pode ser formulada em termos de y:
+
+\vspace{3 mm}
+$x=\frac{k_1 y}{k_2} - ce^{-(k_1 + k_2)t}$
 \vspace{3 mm}
 
 \vspace{3 mm}
 $x=\frac{k_1 y}{k_2}$, para $t \rightarrow \infty$
 \vspace{3 mm}
 
-Ainda, o modelo pode ser escrito na forma com a qual o Gillespie (criador da técnina) escreve:
+\subsubsection{Na forma do Algorítmo de Simulação Estocástica}
+Este modelo pode ser escrito na forma com a qual o Gillespie (criador da técnina) escreve:
 
 \vspace{3 mm}
 Reaction channel
@@ -66,7 +73,7 @@ $a_3(x,y)=e^{-\rho y}$
 $a_4(x,y)=(1-k_3 e^{-\lambda x})$
 
 \subsection{Modelo Sem Exponencial}
-Este modelo é formalizado em termos de equações diferenciais ordinárias acopladas, por conta da facilidade de comunicação. Esta primeira forma do modelo foi desenvolvida do pelo Zé e lembra o sistema Lotka-Voterra (presa e predador).
+Este modelo é formalizado em termos de equações diferenciais ordinárias acopladas, por conta da facilidade de comunicação. Esta primeira forma do modelo foi desenvolvida pelo Zé e lembra o sistema Lotka-Voterra (presa e predador).
 
 Aqui serão descritos os pontos de equilíbrio e relações entre os parâmetros
 
