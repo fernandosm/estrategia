@@ -15,7 +15,7 @@ O modelo baseado na exponencial é mais complexo no sentido de determinar relaç
 
 Onde o termo $e^{-\rho y}$ é o sucesso reprodutivo de x, o termo $(1-k_3 e^{-\lambda x})$ é o sucesso reprodutivo de y e o $k_3$ está relacionado com o sucesso reprodutivo de y na ausência de $x$.
 
-A solução para $\frac{dx}{dt}$ (equação separável) é:
+A solução (equação separável) para $\frac{dx}{dt}$ considerando a população $N$ constante é:
 
 \vspace{3 mm}
 $x=\frac{k_1 N}{k_1 + k_2} - ce^{-(k_1 + k_2)t}$
@@ -30,6 +30,8 @@ $x=\frac{k_1 y}{k_2} - ce^{-(k_1 + k_2)t}$
 \vspace{3 mm}
 $x=\frac{k_1 y}{k_2}$, para $t \rightarrow \infty$
 \vspace{3 mm}
+
+Resultado indentico se extrai analisando o ponto de equilíbrio (muito mais rápido), o que permite usar dados observacionais para determinar $k_1$ e $k_2$. Está solução permite verificar o comportamento de x em relação ao tempo e comparar com a simulação numérica. Além disso, nota-se os parâmetros $\rho$,  $k_3$ e $\lambda$ não influenciam no equilíbrio, mas influenciam na velocidade com a qual ele é atingido.
 
 \subsubsection{Na forma do Algorítmo de Simulação Estocástica}
 Este modelo pode ser escrito na forma com a qual o Gillespie (criador da técnina) escreve:
